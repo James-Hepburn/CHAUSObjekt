@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { inject } from '@vercel/analytics';
+
+inject();
 
 // ─── Mount React app to the #root div in index.html ──────────────────────────
 const rootElement = document.getElementById('root') as HTMLElement;
