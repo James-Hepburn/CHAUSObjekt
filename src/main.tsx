@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { inject } from '@vercel/analytics';
 
 inject();
 
-// ─── Mount React app to the #root div in index.html ──────────────────────────
-const rootElement = document.getElementById('root') as HTMLElement;
-
-ReactDOM.createRoot(rootElement).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );

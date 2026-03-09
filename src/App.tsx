@@ -1,42 +1,35 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './styles.css';
 
-// ─── Page section components ──────────────────────────────────────────────────
-import Navbar from './components/Navbar.tsx';
-import HeroSection from './components/HeroSection.tsx';
-import ProductGrid from './components/ProductGrid.tsx';
-import WhoWeAreSection from './components/WhoWeAreSection.tsx';
-import ShopSection from './components/ShopSection.tsx';
-import ContactSection from './components/ContactSection.tsx';
-import Footer from './components/Footer.tsx';
+import Landing from './components/Landing';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import ProductGrid from './components/ProductGrid';
+import WhoWeAreSection from './components/WhoWeAreSection';
+import ShopSection from './components/ShopSection';
+import ContactSection from './components/ContactSection';
+import Footer from './components/Footer';
 
-// ─── Root Application Component ───────────────────────────────────────────────
-// Composes the full C.HAUS Objekt single-page website.
-const App: React.FC = () => (
+const Home: React.FC = () => (
   <>
-    {/* Fixed navigation bar */}
     <Navbar />
-
     <main>
-      {/* 1. Full-height hero with headline and animated gift box */}
       <HeroSection />
-
-      {/* 2. Featured product cards (services teaser) */}
       <ProductGrid />
-
-      {/* 3. Studio story + 4-pillar value grid */}
       <WhoWeAreSection />
-
-      {/* 4. Interactive gift box discount reveal */}
       <ShopSection />
-
-      {/* 5. Contact form */}
       <ContactSection />
     </main>
-
-    {/* Site-wide footer */}
     <Footer />
   </>
+);
+
+const App: React.FC = () => (
+  <Routes>
+    <Route path="/" element={<Landing />} />
+    <Route path="/home" element={<Home />} />
+  </Routes>
 );
 
 export default App;
