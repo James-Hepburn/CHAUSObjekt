@@ -30,7 +30,7 @@ const Lightbox: React.FC<{ src: string; label: string; onClose: () => void }> = 
       onClick={onClose}
       style={{
         position: 'fixed', inset: 0, zIndex: 9999,
-        background: 'rgba(0,0,0,0.9)',
+        background: 'rgba(13,13,13,0.92)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         cursor: 'zoom-out',
       }}
@@ -45,8 +45,8 @@ const Lightbox: React.FC<{ src: string; label: string; onClose: () => void }> = 
         onClick={onClose}
         style={{
           position: 'absolute', top: 20, right: 24,
-          background: 'none', border: '1px solid rgba(255,255,255,0.3)',
-          color: '#fff', fontFamily: 'Inter,sans-serif',
+          background: 'none', border: '1px solid rgba(245,243,238,0.3)',
+          color: '#f5f3ee', fontFamily: 'Inter,sans-serif',
           fontSize: 12, letterSpacing: 2, padding: '6px 14px',
           cursor: 'pointer', borderRadius: 2,
         }}
@@ -70,11 +70,14 @@ const Card: React.FC<{ img: string; label: string; badge: string }> = ({ img, la
         onMouseLeave={() => setHovered(false)}
         style={{
           position: 'relative',
-          background: '#fff',
+          background: '#ffffff',
           borderRadius: 8,
           overflow: 'hidden',
           cursor: 'zoom-in',
-          boxShadow: hovered ? '0 20px 48px rgba(0,0,0,0.14)' : '0 2px 12px rgba(0,0,0,0.06)',
+          border: '1px solid rgba(26,26,26,0.08)',
+          boxShadow: hovered
+            ? '0 20px 48px rgba(26,26,26,0.12)'
+            : '0 2px 12px rgba(26,26,26,0.05)',
           transform: hovered ? 'translateY(-5px)' : 'translateY(0)',
           transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         }}
@@ -82,7 +85,7 @@ const Card: React.FC<{ img: string; label: string; badge: string }> = ({ img, la
         {badge && (
           <span style={{
             position: 'absolute', top: 12, right: 12, zIndex: 2,
-            background: '#e63946', color: '#fff',
+            background: '#6b859c', color: '#f5f3ee',
             fontFamily: 'Inter,sans-serif', fontSize: 10,
             fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase',
             padding: '4px 10px', borderRadius: 2,
@@ -101,13 +104,46 @@ const Card: React.FC<{ img: string; label: string; badge: string }> = ({ img, la
 };
 
 const ProductGrid: React.FC = () => (
-  <section id="services" style={{ background: '#ece9e2', padding: '100px 0' }}>
-    <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
-      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 48, flexWrap: 'wrap', gap: 16 }}>
-        <h2 style={{ fontFamily: 'Anton,sans-serif', fontSize: 'clamp(40px,5vw,68px)', textTransform: 'uppercase', letterSpacing: '-0.5px', lineHeight: 1, margin: 0 }}>
-          Our <span style={{ color: '#e63946' }}>Pieces</span>
+  <section
+    id="services"
+    style={{
+      background: '#f5f3ee',
+      padding: '100px 0',
+      position: 'relative',
+    }}
+  >
+    {/* Faint zebra texture */}
+    <div
+      aria-hidden="true"
+      style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: 'repeating-linear-gradient(-45deg, transparent 0, transparent 38px, rgba(0,0,0,0.018) 38px, rgba(0,0,0,0.018) 40px)',
+      }}
+    />
+    <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', position: 'relative' }}>
+      <div style={{
+        display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+        marginBottom: 48, flexWrap: 'wrap', gap: 16,
+      }}>
+        <h2 style={{
+          fontFamily: 'Anton,sans-serif',
+          fontSize: 'clamp(40px,5vw,68px)',
+          textTransform: 'uppercase',
+          letterSpacing: '-0.5px',
+          lineHeight: 1,
+          margin: 0,
+          color: '#1a1a1a',
+        }}>
+          Our <span style={{ color: '#6b859c' }}>Pieces</span>
         </h2>
-        <a href="#shop" style={{ fontFamily: 'Inter,sans-serif', fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', borderBottom: '1px solid #111', paddingBottom: 2, color: '#111' }}>
+        <a
+          href="#shop"
+          style={{
+            fontFamily: 'Inter,sans-serif', fontSize: 12, letterSpacing: 2,
+            textTransform: 'uppercase', borderBottom: '1px solid #1a1a1a',
+            paddingBottom: 2, color: '#1a1a1a', textDecoration: 'none',
+          }}
+        >
           View All →
         </a>
       </div>

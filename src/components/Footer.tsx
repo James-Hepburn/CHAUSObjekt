@@ -1,8 +1,16 @@
 import React from 'react';
 
-// ─── Footer ───────────────────────────────────────────────────────────────────
 const Footer: React.FC = () => (
   <footer className="footer" role="contentinfo">
+    {/* Gold accent line at top of footer */}
+    <div
+      aria-hidden="true"
+      style={{
+        height: 3,
+        background: 'linear-gradient(90deg, #a27b42 0%, #c8a96f 30%, #e9d7a4 55%, #c8a96f 75%, #b89456 100%)',
+      }}
+      className="footer__gold-line"
+    />
     <div className="container footer__inner">
       <nav className="footer__links" aria-label="Footer navigation">
         <a href="#services" className="footer__link">Services</a>

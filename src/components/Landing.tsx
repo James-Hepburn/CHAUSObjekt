@@ -15,13 +15,17 @@ interface ConfettiPiece {
   delay: number;
 }
 
-const CONFETTI_COLORS = ["#e63946", "#f5f3ee", "#aaaaaa", "#cc2233", "#ffffff"];
+const CONFETTI_COLORS = [
+  "#cdc6b9", // warm greige
+  "#6b859c", // slate blue
+  "#a7d3cf", // soft teal
+  "#1a1a1a", // black
+  "#f5f3ee", // off-white
+  "#cdc6b9",
+  "#a7d3cf",
+];
 
 // ─── Single unified SVG — lid+bow is a <g> we animate away ──────────────────
-// viewBox 0 0 300 340
-// Box body:  x=20 y=160 w=260 h=160 rx=8   (bottom section)
-// Lid strip: x=10 y=130 w=280 h=38  rx=6   (sits on top of body)
-// Bow:       centred at x=150, sits above lid
 const GiftBoxFull = ({ lidControls }: { lidControls: AnimControls }) => (
   <svg
     viewBox="0 0 300 340"
@@ -30,28 +34,50 @@ const GiftBoxFull = ({ lidControls }: { lidControls: AnimControls }) => (
     style={{ width: "clamp(220px, 30vw, 380px)", height: "auto", overflow: "visible" }}
   >
     <defs>
-      {/* Zebra body */}
+      {/* Zebra body — crisp black & white */}
       <pattern id="zbBody" patternUnits="userSpaceOnUse" width="28" height="28" patternTransform="rotate(-42)">
-        <rect width="28" height="28" fill="#1a1a1a"/>
-        <rect width="14" height="28" fill="#2a2a2a"/>
+        <rect width="28" height="28" fill="#f5f3ee"/>
+        <rect width="14" height="28" fill="#1a1a1a"/>
       </pattern>
       {/* Zebra lid */}
       <pattern id="zbLid" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(-42)">
-        <rect width="20" height="20" fill="#111"/>
-        <rect width="10" height="20" fill="#1e1e1e"/>
+        <rect width="20" height="20" fill="#f5f3ee"/>
+        <rect width="10" height="20" fill="#1a1a1a"/>
       </pattern>
-      {/* Red ribbon / bow */}
+      {/* Gold ribbon / bow pattern */}
       <pattern id="zbBow" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(-45)">
-        <rect width="12" height="12" fill="#c81d2b"/>
-        <rect width="6" height="12" fill="#e63946"/>
+        <rect width="12" height="12" fill="#b89456"/>
+        <rect width="6" height="12" fill="#c8a96f"/>
       </pattern>
 
+      {/* Gold ribbon gradient — vertical (for body/lid ribbons) */}
+      <linearGradient id="goldRibbon" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"   stopColor="#a27b42"/>
+        <stop offset="30%"  stopColor="#c8a96f"/>
+        <stop offset="55%"  stopColor="#e9d7a4"/>
+        <stop offset="75%"  stopColor="#c8a96f"/>
+        <stop offset="100%" stopColor="#b89456"/>
+      </linearGradient>
+
+      {/* Gold bow gradient */}
+      <linearGradient id="goldBow" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%"   stopColor="#e9d7a4"/>
+        <stop offset="45%"  stopColor="#c8a96f"/>
+        <stop offset="100%" stopColor="#a27b42"/>
+      </linearGradient>
+
+      {/* Warm gold tint wash over box body */}
+      <linearGradient id="goldWash" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%"   stopColor="#e9d7a4" stopOpacity="0.18"/>
+        <stop offset="100%" stopColor="#a27b42" stopOpacity="0.10"/>
+      </linearGradient>
+
       <linearGradient id="bodySheen" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.06)"/>
-        <stop offset="100%" stopColor="rgba(0,0,0,0.28)"/>
+        <stop offset="0%" stopColor="rgba(255,255,255,0.25)"/>
+        <stop offset="100%" stopColor="rgba(0,0,0,0.12)"/>
       </linearGradient>
       <linearGradient id="lidSheen" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.15)"/>
+        <stop offset="0%" stopColor="rgba(255,255,255,0.35)"/>
         <stop offset="100%" stopColor="rgba(255,255,255,0)"/>
       </linearGradient>
 
@@ -64,60 +90,63 @@ const GiftBoxFull = ({ lidControls }: { lidControls: AnimControls }) => (
     </defs>
 
     {/* ── BOX BODY (static) ── */}
-    <rect x="20" y="160" width="260" height="160" rx="8" fill="#1a1a1a"/>
+    <rect x="20" y="160" width="260" height="160" rx="8" fill="#f5f3ee"/>
     <rect x="20" y="160" width="260" height="160" rx="8" fill="url(#zbBody)" clipPath="url(#cpBody)"/>
+    <rect x="20" y="160" width="260" height="160" rx="8" fill="url(#goldWash)"/>
     <rect x="20" y="160" width="260" height="160" rx="8" fill="url(#bodySheen)"/>
+    {/* Body border */}
+    <rect x="20" y="160" width="260" height="160" rx="8" fill="none" stroke="#1a1a1a" strokeWidth="2"/>
 
-    {/* Vertical ribbon on body */}
-    <rect x="133" y="160" width="34" height="160" fill="url(#zbBow)" opacity="0.9"/>
-    <rect x="141" y="160" width="9" height="160" fill="rgba(255,255,255,0.07)"/>
+    {/* Vertical ribbon on body — gold gradient */}
+    <rect x="133" y="160" width="34" height="160" fill="url(#goldRibbon)"/>
+    <rect x="141" y="160" width="9" height="160" fill="rgba(255,255,255,0.18)"/>
 
     {/* Bottom shadow */}
-    <rect x="30" y="315" width="240" height="6" rx="3" fill="rgba(0,0,0,0.3)"/>
+    <rect x="30" y="315" width="240" height="6" rx="3" fill="rgba(0,0,0,0.12)"/>
 
     {/* ── LID + BOW (animated group) ── */}
     <motion.g animate={lidControls} style={{ originX: "150px", originY: "149px" }}>
-      {/* Left bow loop — drawn first so lid sits on top */}
+      {/* Left bow loop — gold */}
       <path
         d="M150 135 C132 120 95 93 58 89 C38 87 30 101 42 111 C56 122 108 125 150 135Z"
-        fill="url(#zbBow)"
+        fill="url(#goldBow)"
       />
       <path
         d="M150 135 C132 120 95 93 58 89 C38 87 30 101 42 111 C56 122 108 125 150 135Z"
-        fill="rgba(0,0,0,0.15)"
+        fill="rgba(0,0,0,0.08)"
       />
       <path
         d="M150 134 C136 123 104 101 72 95 C60 92 52 97 56 103"
-        fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" strokeLinecap="round"
+        fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="3" strokeLinecap="round"
       />
 
-      {/* Right bow loop — drawn first so lid sits on top */}
+      {/* Right bow loop — gold */}
       <path
         d="M150 135 C168 120 205 93 242 89 C262 87 270 101 258 111 C244 122 192 125 150 135Z"
-        fill="url(#zbBow)"
+        fill="url(#goldBow)"
       />
       <path
         d="M150 135 C168 120 205 93 242 89 C262 87 270 101 258 111 C244 122 192 125 150 135Z"
-        fill="rgba(0,0,0,0.15)"
+        fill="rgba(0,0,0,0.08)"
       />
       <path
         d="M150 134 C164 123 196 101 228 95 C240 92 248 97 244 103"
-        fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" strokeLinecap="round"
+        fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="3" strokeLinecap="round"
       />
 
-      {/* Lid strip — drawn after bows so it covers their base */}
-      <rect x="10" y="130" width="280" height="38" rx="6" fill="#111"/>
+      {/* Lid strip */}
+      <rect x="10" y="130" width="280" height="38" rx="6" fill="#f5f3ee"/>
       <rect x="10" y="130" width="280" height="38" rx="6" fill="url(#zbLid)" clipPath="url(#cpLid)"/>
+      <rect x="10" y="130" width="280" height="38" rx="6" fill="url(#goldWash)"/>
       <rect x="10" y="130" width="280" height="38" rx="6" fill="url(#lidSheen)"/>
+      <rect x="10" y="130" width="280" height="38" rx="6" fill="none" stroke="#1a1a1a" strokeWidth="2"/>
 
-      {/* Horizontal ribbon on lid */}
-      <rect x="10" y="142" width="280" height="14" fill="url(#zbBow)" opacity="0.9"/>
-      <rect x="10" y="146" width="280" height="5" fill="rgba(255,255,255,0.07)"/>
+      {/* Horizontal ribbon on lid — gold gradient */}
+      <rect x="10" y="142" width="280" height="14" fill="url(#goldRibbon)"/>
+      <rect x="10" y="146" width="280" height="5" fill="rgba(255,255,255,0.22)"/>
 
-      {/* Vertical ribbon through lid */}
-      <rect x="133" y="130" width="34" height="38" fill="url(#zbBow)" opacity="0.95"/>
-
-
+      {/* Vertical ribbon through lid — gold gradient */}
+      <rect x="133" y="130" width="34" height="38" fill="url(#goldRibbon)"/>
     </motion.g>
   </svg>
 );
@@ -210,7 +239,7 @@ export default function Landing() {
       style={{
         position: "fixed",
         inset: 0,
-        background: "#0d0d0d",
+        background: "#f5f3ee",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -220,26 +249,38 @@ export default function Landing() {
         cursor: "pointer",
       }}
     >
+      {/* Zebra diagonal stripe background — very subtle */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          backgroundImage:
+            "repeating-linear-gradient(-45deg, transparent 0, transparent 38px, rgba(0,0,0,0.025) 38px, rgba(0,0,0,0.025) 40px)",
+        }}
+      />
+
       {/* Grain */}
       <div
         aria-hidden="true"
         style={{
           position: "absolute", inset: 0, pointerEvents: "none",
-          backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")",
-          opacity: 0.45,
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")",
+          opacity: 0.35,
         }}
       />
 
-      {/* Top stripe */}
+      {/* Top stripe — black & white zebra */}
       <div aria-hidden="true" style={{
         position: "absolute", top: 0, left: 0, right: 0, height: 16,
-        background: "repeating-linear-gradient(-45deg,#e63946 0,#e63946 10px,#0d0d0d 10px,#0d0d0d 20px)",
+        background: "repeating-linear-gradient(-45deg,#1a1a1a 0,#1a1a1a 10px,#f5f3ee 10px,#f5f3ee 20px)",
       }}/>
 
       {/* ── Main composition ── */}
       <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "9rem" }}>
 
-        {/* Confetti — positioned relative to box */}
+        {/* Confetti */}
         {confetti.map((p) => (
           <motion.div
             key={p.id}
@@ -276,7 +317,7 @@ export default function Landing() {
             fontSize: "clamp(2.2rem, 5.5vw, 5rem)",
             textTransform: "uppercase",
             letterSpacing: "0.06em",
-            color: "#f5f3ee",
+            color: "#1a1a1a",
           }}>
             C.HAUS{" "}
           </span>
@@ -285,7 +326,7 @@ export default function Landing() {
             fontSize: "clamp(2.2rem, 5.5vw, 5rem)",
             textTransform: "uppercase",
             letterSpacing: "0.06em",
-            color: "#e63946",
+            color: "#6b859c",
           }}>
             Objekt
           </span>
@@ -311,7 +352,7 @@ export default function Landing() {
             fontSize: "clamp(0.75rem, 1.8vw, 1.1rem)",
             textTransform: "uppercase",
             letterSpacing: "0.25em",
-            color: "#666",
+            color: "#999",
           }}>
             Timeless Culture
           </span>
@@ -320,7 +361,7 @@ export default function Landing() {
             fontSize: "clamp(0.9rem, 2vw, 1.3rem)",
             textTransform: "uppercase",
             letterSpacing: "0.18em",
-            color: "#e63946",
+            color: "#6b859c",
           }}>
             Gifts to Give
           </span>
@@ -329,13 +370,13 @@ export default function Landing() {
             fontSize: "clamp(0.9rem, 2vw, 1.3rem)",
             textTransform: "uppercase",
             letterSpacing: "0.18em",
-            color: "#f5f3ee",
+            color: "#1a1a1a",
           }}>
             Objekts to Keep
           </span>
         </motion.div>
 
-        {/* Gift box — single unified SVG */}
+        {/* Gift box */}
         <GiftBoxFull lidControls={lidCtrl} />
       </div>
 
@@ -357,14 +398,14 @@ export default function Landing() {
           fontSize: 10,
           letterSpacing: "0.3em",
           textTransform: "uppercase",
-          color: "#f5f3ee",
+          color: "#1a1a1a",
         }}>
           Scroll or Click to Open
         </span>
         <motion.span
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          style={{ fontSize: 16, color: "#f5f3ee" }}
+          style={{ fontSize: 16, color: "#1a1a1a" }}
         >
           ↓
         </motion.span>
@@ -373,7 +414,7 @@ export default function Landing() {
       {/* Bottom stripe */}
       <div aria-hidden="true" style={{
         position: "absolute", bottom: 0, left: 0, right: 0, height: 16,
-        background: "repeating-linear-gradient(-45deg,#e63946 0,#e63946 10px,#0d0d0d 10px,#0d0d0d 20px)",
+        background: "repeating-linear-gradient(-45deg,#1a1a1a 0,#1a1a1a 10px,#f5f3ee 10px,#f5f3ee 20px)",
       }}/>
 
       {/* Skip */}
@@ -389,17 +430,17 @@ export default function Landing() {
           fontSize: 10,
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          color: "#f5f3ee",
+          color: "#1a1a1a",
           background: "transparent",
-          border: "1px solid #2a2a2a",
+          border: "1px solid #cdc6b9",
           borderRadius: 3,
           cursor: "pointer",
           opacity: showSkip ? 1 : 0,
           transition: "opacity 0.5s ease, border-color 0.2s ease",
           pointerEvents: showSkip ? "auto" : "none",
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#e63946")}
-        onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#2a2a2a")}
+        onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#6b859c")}
+        onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#cdc6b9")}
       >
         Skip →
       </button>

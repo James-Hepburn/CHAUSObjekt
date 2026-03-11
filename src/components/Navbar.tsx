@@ -34,7 +34,18 @@ const Navbar: React.FC = () => {
       className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}
       role="navigation"
       aria-label="Main navigation"
+      style={{ background: '#1a1a1a', flexDirection: 'column', display: 'flex' }}
     >
+      {/* Gold ribbon accent line at very top */}
+      <div
+        aria-hidden="true"
+        style={{
+          height: 3,
+          flexShrink: 0,
+          background: 'linear-gradient(90deg, #a27b42 0%, #c8a96f 30%, #e9d7a4 55%, #c8a96f 75%, #b89456 100%)',
+        }}
+      />
+
       <div className="container navbar__inner">
         <a href="#hero" className="navbar__logo" aria-label="C.HAUS Objekt home">
           <img
@@ -47,7 +58,11 @@ const Navbar: React.FC = () => {
         <ul className="navbar__links" role="list">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="navbar__link">
+              <a
+                href={link.href}
+                className="navbar__link"
+                style={{ color: '#f5f3ee' }}
+              >
                 {link.label}
               </a>
             </li>
@@ -59,15 +74,20 @@ const Navbar: React.FC = () => {
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((prev) => !prev)}
+          style={{ color: '#f5f3ee' }}
         >
-          <span />
-          <span />
-          <span />
+          <span style={{ background: '#f5f3ee' }} />
+          <span style={{ background: '#f5f3ee' }} />
+          <span style={{ background: '#f5f3ee' }} />
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="navbar__mobile-menu" role="menu">
+        <div
+          className="navbar__mobile-menu"
+          role="menu"
+          style={{ background: '#1a1a1a', borderTop: '1px solid rgba(245,243,238,0.1)' }}
+        >
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -75,6 +95,7 @@ const Navbar: React.FC = () => {
               className="navbar__mobile-link"
               role="menuitem"
               onClick={closeMobile}
+              style={{ color: '#f5f3ee' }}
             >
               {link.label}
             </a>
