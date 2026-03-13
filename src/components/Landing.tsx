@@ -313,7 +313,7 @@ export default function Landing() {
           }}
         >
           <span style={{
-            fontFamily: "'Anton', sans-serif",
+            fontFamily: "'Helvetica', sans-serif",
             fontSize: "clamp(2.2rem, 5.5vw, 5rem)",
             textTransform: "uppercase",
             letterSpacing: "0.06em",
@@ -322,7 +322,7 @@ export default function Landing() {
             C.HAUS{" "}
           </span>
           <span style={{
-            fontFamily: "'Anton', sans-serif",
+            fontFamily: "'Helvetica', sans-serif",
             fontSize: "clamp(2.2rem, 5.5vw, 5rem)",
             textTransform: "uppercase",
             letterSpacing: "0.06em",
@@ -346,18 +346,16 @@ export default function Landing() {
           }}
         >
           <span style={{
-            fontFamily: "'Inter', sans-serif",
-            fontWeight: 300,
-            fontStyle: "italic",
-            fontSize: "clamp(0.75rem, 1.8vw, 1.1rem)",
+            fontFamily: "'Helvetica', sans-serif",
+            fontSize: "clamp(0.9rem, 2vw, 1.3rem)",
             textTransform: "uppercase",
-            letterSpacing: "0.25em",
+            letterSpacing: "0.18em",
             color: "#999",
           }}>
             Timeless Culture
           </span>
           <span style={{
-            fontFamily: "'Anton', sans-serif",
+            fontFamily: "'Helvetica', sans-serif",
             fontSize: "clamp(0.9rem, 2vw, 1.3rem)",
             textTransform: "uppercase",
             letterSpacing: "0.18em",
@@ -366,7 +364,7 @@ export default function Landing() {
             Gifts to Give
           </span>
           <span style={{
-            fontFamily: "'Anton', sans-serif",
+            fontFamily: "'Helvetica', sans-serif",
             fontSize: "clamp(0.9rem, 2vw, 1.3rem)",
             textTransform: "uppercase",
             letterSpacing: "0.18em",
@@ -394,7 +392,7 @@ export default function Landing() {
         }}
       >
         <span style={{
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Helvetica', sans-serif",
           fontSize: 10,
           letterSpacing: "0.3em",
           textTransform: "uppercase",
@@ -426,7 +424,7 @@ export default function Landing() {
           right: 36,
           zIndex: 9999,
           padding: "0.5rem 1rem",
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Helvetica', sans-serif",
           fontSize: 10,
           letterSpacing: "0.2em",
           textTransform: "uppercase",
