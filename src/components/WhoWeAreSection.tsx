@@ -31,11 +31,10 @@ const WhoWeAreSection: React.FC = () => {
     <section id="who-we-are" className="who-section" aria-label="Who We Are">
       <div className="container">
         <div className="who-section__header">
-          <h2 className="section-title section-title--white">
-            Who{' '}
-            <span className="text-accent">We</span>
-            <br />
-            Are
+          <h2 className="section-title section-title--black" style={{ textAlign: 'left' }}>
+            <span style={{ display: 'block', paddingLeft: '0em' }}>Who</span>
+            <span style={{ display: 'block', paddingLeft: '2em' }}>We</span>
+            <span style={{ display: 'block', paddingLeft: '3.5em' }}>Are</span>
           </h2>
           <p className="who-section__intro">
             At C.HAUS Objekt, our mission is to craft meaningful gifts
