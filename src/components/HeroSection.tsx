@@ -14,7 +14,7 @@ const HeroSection: React.FC = () => (
       aria-hidden="true"
       style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'repeating-linear-gradient(-45deg, transparent 0, transparent 38px, rgba(0,0,0,0.025) 38px, rgba(0,0,0,0.025) 40px)',
+        backgroundColor: '#000',
       }}
     />
 
@@ -34,25 +34,25 @@ const HeroSection: React.FC = () => (
         paddingBottom: '0.05em',
       }}>
         <span style={{
-          fontFamily: "'Inter', sans-serif",
-          fontSize: 'clamp(32px, 10vw, 140px)',
-          fontWeight: 300,
-          fontStyle: 'italic',
+          fontFamily: "'Helvetica', sans-serif",
+          fontSize: 'clamp(20px, 6vw, 80px)',
+          fontWeight: 400,
           textTransform: 'uppercase',
-          color: '#999',
+          letterSpacing: '0.03em',
+          color: '#fff',
         }}>
           Timeless
         </span>
 
         <span style={{
-          fontFamily: "'Inter', sans-serif",
-          fontSize: 'clamp(32px, 10vw, 140px)',
-          fontWeight: 300,
-          fontStyle: 'italic',
+          fontFamily: "'Helvetica', sans-serif",
+          fontSize: 'clamp(20px, 6vw, 80px)',
+          fontWeight: 400,
           textTransform: 'uppercase',
-          color: '#999',
+          letterSpacing: '0.03em',
+          color: '#fff',
         }}>
-          Culture.
+          Culture
         </span>
       </div>
 
@@ -66,34 +66,34 @@ const HeroSection: React.FC = () => (
         paddingBottom: '0.05em',
       }}>
         <span style={{
-          fontFamily: "'Anton', sans-serif",
-          fontSize: 'clamp(32px, 10vw, 140px)',
+          fontFamily: "'Helvetica', sans-serif",
+          fontSize: 'clamp(20px, 6vw, 80px)',
           fontWeight: 400,
           textTransform: 'uppercase',
           letterSpacing: '0.03em',
-          color: '#6b859c',
+          color: '#fff',
         }}>
           Gifts
         </span>
         <span style={{
-          fontFamily: "'Anton', sans-serif",
-          fontSize: 'clamp(32px, 10vw, 140px)',
+          fontFamily: "'Helvetica', sans-serif",
+          fontSize: 'clamp(20px, 6vw, 80px)',
           fontWeight: 400,
           textTransform: 'uppercase',
           letterSpacing: '0.03em',
-          color: '#6b859c',
+          color: '#fff',
         }}>
           to
         </span>
         <span style={{
-          fontFamily: "'Anton', sans-serif",
-          fontSize: 'clamp(32px, 10vw, 140px)',
+          fontFamily: "'Helvetica', sans-serif",
+          fontSize: 'clamp(20px, 6vw, 80px)',
           fontWeight: 400,
           textTransform: 'uppercase',
           letterSpacing: '0.03em',
-          color: '#6b859c',
+          color: '#fff',
         }}>
-          Give.
+          Give
         </span>
       </div>
 
@@ -108,24 +108,24 @@ const HeroSection: React.FC = () => (
         zIndex: 2,
       }}>
         <span style={{
-          fontFamily: "'Anton', sans-serif",
-          fontSize: 'clamp(32px, 10vw, 140px)',
+          fontFamily: "'Helvetica', sans-serif",
+          fontSize: 'clamp(20px, 6vw, 80px)',
           fontWeight: 400,
           textTransform: 'uppercase',
           letterSpacing: '0.03em',
-          color: '#1a1a1a',
+          color: '#fff',
         }}>
           Objekts
         </span>
         <span style={{
-          fontFamily: "'Anton', sans-serif",
-          fontSize: 'clamp(32px, 10vw, 140px)',
+          fontFamily: "'Helvetica', sans-serif",
+          fontSize: 'clamp(20px, 6vw, 80px)',
           fontWeight: 400,
           textTransform: 'uppercase',
           letterSpacing: '0.03em',
-          color: '#1a1a1a',
+          color: '#fff',
         }}>
-          to Keep.
+          to Keep
         </span>
       </div>
 

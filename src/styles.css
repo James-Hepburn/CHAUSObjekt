@@ -988,6 +988,9 @@ ul {
     padding-top: 60px;
   }
   .hero__image { order: 1; }
+  .hero > div > div:last-child {
+    margin-top: clamp(-50px, 20vw, 10px) !important;
+  }
 
   /* Contact */
   .contact-section__grid {
