@@ -226,7 +226,7 @@ const ShopSection: React.FC = () => {
       />
 
       <div className="container shop-section__inner" style={{ flex: 1 }}>
-        <p className="section-eyebrow" style={{ marginTop: 25 }}>Coming Soon</p>
+        <p className="section-eyebrow" style={{ marginTop: 25, fontSize: '1em'}}>Coming Soon</p>
 
         <h2 className="section-title">
           Shop Our{' '}

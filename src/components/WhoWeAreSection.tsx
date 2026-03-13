@@ -29,7 +29,18 @@ const WhoWeAreSection: React.FC = () => {
 
   return (
     <section id="who-we-are" className="who-section" aria-label="Who We Are">
-      <div className="container">
+      {/* Stripe — at absolute top edge, no gap */}
+      <div
+        aria-hidden="true"
+        style={{
+          height: 16,
+          width: '100%',
+          flexShrink: 0,
+          background: 'repeating-linear-gradient(-45deg,#1a1a1a 0,#1a1a1a 10px,#f5f3ee 10px,#f5f3ee 20px)',
+        }}
+      />
+
+      <div className="container" style={{ paddingTop: '80px' }}>
         <div className="who-section__header">
           <h2 className="section-title section-title--black" style={{ textAlign: 'left' }}>
             <span style={{ display: 'block', paddingLeft: '0em' }}>Who</span>

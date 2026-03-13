@@ -18,10 +18,6 @@ const Footer: React.FC = () => (
         <a href="#shop" className="footer__link">Shop</a>
         <a href="#contact" className="footer__link">Contact</a>
       </nav>
-
-      <p className="footer__copy">
-        © {new Date().getFullYear()} C.HAUS Objekt
-      </p>
     </div>
   </footer>
 );

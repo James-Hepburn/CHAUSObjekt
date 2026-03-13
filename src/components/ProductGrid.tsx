@@ -46,7 +46,7 @@ const Lightbox: React.FC<{ src: string; label: string; onClose: () => void }> = 
         style={{
           position: 'absolute', top: 20, right: 24,
           background: 'none', border: '1px solid rgba(245,243,238,0.3)',
-          color: '#f5f3ee', fontFamily: 'Inter,sans-serif',
+          color: '#f5f3ee', fontFamily: 'Helvetica,sans-serif',
           fontSize: 12, letterSpacing: 2, padding: '6px 14px',
           cursor: 'pointer', borderRadius: 2,
         }}
@@ -86,7 +86,7 @@ const Card: React.FC<{ img: string; label: string; badge: string }> = ({ img, la
           <span style={{
             position: 'absolute', top: 12, right: 12, zIndex: 2,
             background: '#6b859c', color: '#f5f3ee',
-            fontFamily: 'Inter,sans-serif', fontSize: 10,
+            fontFamily: 'Helvetica,sans-serif', fontSize: 10,
             fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase',
             padding: '4px 10px', borderRadius: 2,
           }}>
@@ -108,50 +108,56 @@ const ProductGrid: React.FC = () => (
     id="services"
     style={{
       background: '#f5f3ee',
-      padding: '100px 0',
       position: 'relative',
     }}
   >
-    {/* Faint zebra texture */}
+    
+    {/* Stripe — at absolute top edge, no gap */}
     <div
       aria-hidden="true"
       style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'repeating-linear-gradient(-45deg, transparent 0, transparent 38px, rgba(0,0,0,0.018) 38px, rgba(0,0,0,0.018) 40px)',
+        height: 16,
+        width: '100%',
+        flexShrink: 0,
+        background: 'repeating-linear-gradient(-45deg,#1a1a1a 0,#1a1a1a 10px,#f5f3ee 10px,#f5f3ee 20px)',
       }}
     />
-    <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-      <div style={{
-        display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
-        marginBottom: 48, flexWrap: 'wrap', gap: 16,
-      }}>
-        <h2 style={{
-          fontFamily: 'Anton,sans-serif',
-          fontSize: 'clamp(40px,5vw,68px)',
-          textTransform: 'uppercase',
-          letterSpacing: '-0.5px',
-          lineHeight: 1,
-          margin: 0,
-          color: '#1a1a1a',
-        }}>
-          Our <span style={{ color: '#6b859c' }}>Pieces</span>
-        </h2>
-        <a
-          href="#shop"
-          style={{
-            fontFamily: 'Inter,sans-serif', fontSize: 12, letterSpacing: 2,
-            textTransform: 'uppercase', borderBottom: '1px solid #1a1a1a',
-            paddingBottom: 2, color: '#1a1a1a', textDecoration: 'none',
-          }}
-        >
-          View All →
-        </a>
-      </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 20 }}>
-        {PRODUCTS.map((p, i) => (
-          <Card key={i} img={p.img} label={p.label} badge={p.badge} />
-        ))}
+    {/* Content with its own padding */}
+    <div style={{ padding: '100px 0' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', position: 'relative' }}>
+        <div style={{
+          display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+          marginBottom: 48, flexWrap: 'wrap', gap: 16,
+        }}>
+          <h2 style={{
+            fontFamily: 'Helvetica,sans-serif',
+            fontSize: 'clamp(40px,5vw,68px)',
+            textTransform: 'uppercase',
+            letterSpacing: '-0.5px',
+            lineHeight: 1,
+            margin: 0,
+            color: '#1a1a1a',
+          }}>
+            Our <span style={{ color: '#6b859c' }}>Pieces</span>
+          </h2>
+          <a
+            href="#shop"
+            style={{
+              fontFamily: 'Helvetica,sans-serif', fontSize: 12, letterSpacing: 2,
+              textTransform: 'uppercase', borderBottom: '1px solid #1a1a1a',
+              paddingBottom: 2, color: '#1a1a1a', textDecoration: 'none',
+            }}
+          >
+            View All →
+          </a>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 20 }}>
+          {PRODUCTS.map((p, i) => (
+            <Card key={i} img={p.img} label={p.label} badge={p.badge} />
+          ))}
+        </div>
       </div>
     </div>
   </section>

@@ -17,9 +17,9 @@
   --nav-h:        64px;
   --radius:       4px;
 
-  --font-display: 'Anton', sans-serif;
-  --font-body:    'Syne', sans-serif;
-  --font-fine:    'Inter', sans-serif;
+  --font-display: 'Helvetica', sans-serif;
+  --font-body:    'Helvetica', sans-serif;
+  --font-fine:    'Helvetica', sans-serif;
 
   --transition:   0.25s ease;
 }
@@ -810,7 +810,7 @@ ul {
    CONTACT — stays dark
 ═══════════════════════════════════════════════════════════ */
 .contact-section {
-  background: var(--black);
+  background: #000;
   color: var(--white);
   padding: 120px 0 80px;
 }

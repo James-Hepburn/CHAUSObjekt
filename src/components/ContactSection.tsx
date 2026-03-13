@@ -106,10 +106,11 @@ const ContactSection: React.FC = () => {
         <div className="contact-section__grid">
           <div className="contact-section__intro">
             <h2 className="section-title section-title--white">
-              We'd Love{' '}
+              We'd Love
+              <br/>
               <span className="text-accent">To Hear</span>
-              <br />
-              From You.
+              <br/>
+              From You
             </h2>
           </div>
 
@@ -157,7 +158,7 @@ const ContactSection: React.FC = () => {
               </button>
             ) : (
               <p className="contact-form__success" role="status" aria-live="polite">
-                ✓ Message sent! We'll be in touch soon.
+                Message sent! We'll be in touch soon.
               </p>
             )}
 
