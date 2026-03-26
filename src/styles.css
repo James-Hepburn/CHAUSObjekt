@@ -783,6 +783,7 @@ ul {
   transform: translateY(10px);
   transition: opacity 0.4s ease, transform 0.4s ease;
   text-align: center;
+  margin-top: -65px;
 }
 
 .gift-interactive__reveal--visible {
