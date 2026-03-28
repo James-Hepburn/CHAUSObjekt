@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import emailjs from '@emailjs/browser';
 import { ContactFormState } from '../types.ts';
 
 const INITIAL_FORM: ContactFormState = {
@@ -76,27 +77,22 @@ const ContactSection: React.FC = () => {
     e.preventDefault();
     setSubmitting(true);
     setError(false);
- 
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        access_key: '839cbd13-6eab-456b-a335-2e80ec36ed88', 
+
+    emailjs.send(
+      'service_rd0mfzb',
+      'template_352f6eg',
+      {
         from_name:  form.name,
         from_email: form.email,
         phone:      form.phone || 'Not provided',
         message:    form.message,
-      }),
-    })
-    .then((res) => res.json())
-    .then((data) => {
+      },
+      'gjIkXTojwaoHdXxyi'
+    )
+    .then(() => {
       setSubmitting(false);
-      if (data.success) {
-        setSubmitted(true);
-        setForm(INITIAL_FORM);
-      } else {
-        setError(true);
-      }
+      setSubmitted(true);
+      setForm(INITIAL_FORM);
     })
     .catch(() => {
       setSubmitting(false);
