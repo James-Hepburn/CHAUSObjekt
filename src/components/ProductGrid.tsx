@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import tshirt01 from '../assets/WEBSITE_TSHIRTS-01.png';
 import tshirt02 from '../assets/WEBSITE_TSHIRTS-02.png';
@@ -108,6 +109,8 @@ const useIsMobile = () => {
 
 const ProductGrid: React.FC = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
+  
   return (
   <section
     id="services"
@@ -133,18 +136,25 @@ const ProductGrid: React.FC = () => {
             margin: 0,
             color: '#1a1a1a',
           }}>
-            Our <span style={{ color: '#6b859c' }}>Pieces</span>
+            Our <span style={{ color: '#6b859c' }}>Works</span>
           </h2>
-          <a
-            href="#shop"
+          <button
+            onClick={() => navigate('/events')} 
             style={{
-              fontFamily: 'Helvetica, sans-serif', fontSize: 12, letterSpacing: 2,
-              textTransform: 'uppercase', borderBottom: '1px solid #1a1a1a',
-              paddingBottom: 2, color: '#1a1a1a', textDecoration: 'none',
+              fontFamily: 'Helvetica, sans-serif', 
+              fontSize: 12, 
+              letterSpacing: 2,
+              textTransform: 'uppercase', 
+              border: 'none',
+              background: 'none',
+              borderBottom: '1px solid #1a1a1a',
+              paddingBottom: 2, 
+              color: '#1a1a1a', 
+              cursor: 'pointer',
             }}
           >
-            View All →
-          </a>
+            View Events →
+          </button>
         </div>
 
           {/* ── DESKTOP GRID ── */}

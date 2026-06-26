@@ -29,7 +29,7 @@ const HeroSection: React.FC = () => (
         display: 'flex',
         alignItems: 'baseline',
         justifyContent: 'center',
-        gap: '0.45em',
+        gap: '1.5em',
         lineHeight: 0.9,
         paddingBottom: '0.05em',
       }}>
@@ -61,7 +61,7 @@ const HeroSection: React.FC = () => (
         display: 'flex',
         alignItems: 'baseline',
         justifyContent: 'center',
-        gap: '0.45em',
+        gap: '1.5em',
         lineHeight: 0.9,
         paddingBottom: '0.05em',
       }}>
@@ -102,7 +102,7 @@ const HeroSection: React.FC = () => (
         display: 'flex',
         alignItems: 'baseline',
         justifyContent: 'center',
-        gap: '0.45em',
+        gap: '1.5em',
         lineHeight: 0.9,
         position: 'relative',
         zIndex: 2,

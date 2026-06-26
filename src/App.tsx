@@ -6,6 +6,7 @@ import Landing from './components/Landing';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import ProductGrid from './components/ProductGrid';
+import Events from './components/Events';
 import WhoWeAreSection from './components/WhoWeAreSection';
 import ShopSection from './components/ShopSection';
 import ContactSection from './components/ContactSection';
@@ -29,6 +30,7 @@ const App: React.FC = () => (
   <Routes>
     <Route path="/" element={<Landing />} />
     <Route path="/home" element={<Home />} />
+    <Route path="/events" element={<Events />} />
   </Routes>
 );
 
