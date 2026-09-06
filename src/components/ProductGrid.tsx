@@ -6,6 +6,11 @@ import tshirt02 from '../assets/WEBSITE_TSHIRTS-02.png';
 import tshirt03 from '../assets/WEBSITE_TSHIRTS-03.png';
 import tshirt04 from '../assets/WEBSITE_TSHIRTS-04.png';
 import businessCard from '../assets/Business-Card.png';
+import rolSan1 from '../assets/RolSan1.jpg';
+import rolSan2 from '../assets/RolSan2.jpg';
+import rolSan3 from '../assets/RolSan3.jpg';
+import rolSan4 from '../assets/RolSan4.jpg';
+import rolSan5 from '../assets/RolSan5.jpg';
 
 const PRODUCTS = [
   { img: tshirt01,     label: 'Hong Kong Tee — East Meets West', badge: '' },
@@ -13,6 +18,11 @@ const PRODUCTS = [
   { img: tshirt03,     label: 'Catch The Tram — Crop Tee',       badge: '' },
   { img: tshirt04,     label: 'Hong Kong Tee — Bold Edition',    badge: '' },
   { img: businessCard, label: 'Wesley Tsang — Business Card',    badge: '' },
+  { img: rolSan1,       label: 'Rolsan Work 1',                   badge: '' },
+  { img: rolSan2,       label: 'Rolsan Work 2',                   badge: '' },
+  { img: rolSan3,       label: 'Rolsan Work 3',                   badge: '' },
+  { img: rolSan4,       label: 'Rolsan Work 4',                   badge: '' },
+  { img: rolSan5,       label: 'Rolsan Work 5',                   badge: '' },
 ];
 
 const ZEBRA = 'repeating-linear-gradient(-45deg, #1a1a1a 0, #1a1a1a 10px, #f5f3ee 10px, #f5f3ee 20px)';
@@ -60,7 +70,7 @@ const Lightbox: React.FC<{ src: string; label: string; onClose: () => void }> = 
   );
 };
 
-// Single image cell with thick black border
+// Single image cell
 const Cell: React.FC<{
   img: string;
   label: string;
@@ -77,8 +87,8 @@ const Cell: React.FC<{
           position: 'relative',
           overflow: 'hidden',
           cursor: 'zoom-in',
-          border: '3px solid #1a1a1a',
           background: '#fff',
+          border: '3px solid #1a1a1a',
           ...style,
         }}
       >
@@ -110,109 +120,104 @@ const useIsMobile = () => {
 const ProductGrid: React.FC = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
-  
+
+  const height = isMobile ? 220 : 320;
+
   return (
-  <section
-    id="services"
-    style={{ background: '#f5f3ee', position: 'relative' }}
-  >
-    {/* Top zebra stripe */}
-    <div aria-hidden="true" style={{ height: 16, width: '100%', background: ZEBRA }} />
+    <section
+      id="services"
+      style={{ background: '#f5f3ee', position: 'relative' }}
+    >
+      {/* Top zebra stripe */}
+      <div aria-hidden="true" style={{ height: 16, width: '100%', background: ZEBRA }} />
 
-    <div style={{ padding: '80px 0' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
+      <div style={{ padding: '80px 0' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
 
-        {/* Header */}
-        <div style={{
-          display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
-          marginBottom: 40, flexWrap: 'wrap', gap: 16,
-        }}>
-          <h2 style={{
-            fontFamily: 'Helvetica, sans-serif',
-            fontSize: 'clamp(40px, 5vw, 68px)',
-            textTransform: 'uppercase',
-            letterSpacing: '-0.5px',
-            lineHeight: 1,
-            margin: 0,
-            color: '#1a1a1a',
+          {/* Header */}
+          <div style={{
+            display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+            marginBottom: 40, flexWrap: 'wrap', gap: 16,
           }}>
-            Our <span style={{ color: '#6b859c' }}>Works</span>
-          </h2>
-          <button
-            onClick={() => navigate('/events')} 
-            style={{
-              fontFamily: 'Helvetica, sans-serif', 
-              fontSize: 12, 
-              letterSpacing: 2,
-              textTransform: 'uppercase', 
-              border: 'none',
-              background: 'none',
-              borderBottom: '1px solid #1a1a1a',
-              paddingBottom: 2, 
-              color: '#1a1a1a', 
-              cursor: 'pointer',
-            }}
-          >
-            View Events →
-          </button>
-        </div>
+            <h2 style={{
+              fontFamily: 'Helvetica, sans-serif',
+              fontSize: 'clamp(40px, 5vw, 68px)',
+              textTransform: 'uppercase',
+              letterSpacing: '-0.5px',
+              lineHeight: 1,
+              margin: 0,
+              color: '#1a1a1a',
+            }}>
+              Our <span style={{ color: '#6b859c' }}>Works</span>
+            </h2>
+            <button
+              onClick={() => navigate('/events')} 
+              style={{
+                fontFamily: 'Helvetica, sans-serif', 
+                fontSize: 12, 
+                letterSpacing: 2,
+                textTransform: 'uppercase', 
+                border: 'none',
+                background: 'none',
+                borderBottom: '1px solid #1a1a1a',
+                paddingBottom: 2, 
+                color: '#1a1a1a', 
+                cursor: 'pointer',
+              }}
+            >
+              View Events →
+            </button>
+          </div>
 
-          {/* ── DESKTOP GRID ── */}
-          {!isMobile && (
-            <div style={{ border: '3px solid #1a1a1a' }}>
-              {/* Row 1: zebra | hero | zebra */}
-              <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr 80px', borderBottom: '3px solid #1a1a1a' }}>
-                <div style={{ background: ZEBRA, borderRight: '3px solid #1a1a1a' }} />
-                <Cell img={PRODUCTS[0].img} label={PRODUCTS[0].label} style={{ height: 420 }} />
-                <div style={{ background: ZEBRA, borderLeft: '3px solid #1a1a1a' }} />
-              </div>
-              {/* Row 2: two equal cells */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', borderBottom: '3px solid #1a1a1a' }}>
-                <Cell img={PRODUCTS[1].img} label={PRODUCTS[1].label} style={{ height: 320, borderRight: '3px solid #1a1a1a' }} />
-                <Cell img={PRODUCTS[2].img} label={PRODUCTS[2].label} style={{ height: 320 }} />
-              </div>
-              {/* Row 3: two images + zebra filler */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-                <Cell img={PRODUCTS[3].img} label={PRODUCTS[3].label} style={{ height: 300, borderRight: '3px solid #1a1a1a' }} />
-                <Cell img={PRODUCTS[4].img} label={PRODUCTS[4].label} style={{ height: 300, borderRight: '3px solid #1a1a1a' }} />
-                <div style={{ height: 300, background: ZEBRA, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span style={{
-                    fontFamily: 'Helvetica, sans-serif', fontSize: 11, letterSpacing: 3,
-                    textTransform: 'uppercase', color: '#1a1a1a', background: '#f5f3ee',
-                    padding: '10px 18px', border: '2px solid #1a1a1a', whiteSpace: 'nowrap',
-                  }}>More Coming Soon</span>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* ── GRID WITH ZEBRA PATTERN FILLING THE SPACES (GAPS) ── */}
+          <div style={{
+            background: ZEBRA,
+            padding: 12,
+            display: 'grid',
+            gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
+            gap: 12,
+            border: '3px solid #1a1a1a',
+          }}>
+            {PRODUCTS.map((product, index) => (
+              <Cell 
+                key={index} 
+                img={product.img} 
+                label={product.label} 
+                style={{ height: height }} 
+              />
+            ))}
 
-          {/* ── MOBILE GRID ── */}
-          {isMobile && (
-            <div style={{ border: '3px solid #1a1a1a' }}>
-              {/* Zebra bar top */}
-              <div style={{ height: 40, background: ZEBRA, borderBottom: '3px solid #1a1a1a' }} />
-              {/* Hero full width */}
-              <Cell img={PRODUCTS[0].img} label={PRODUCTS[0].label} style={{ height: 260, borderBottom: '3px solid #1a1a1a' }} />
-              {/* Row: two side by side */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', borderBottom: '3px solid #1a1a1a' }}>
-                <Cell img={PRODUCTS[1].img} label={PRODUCTS[1].label} style={{ height: 190, borderRight: '3px solid #1a1a1a' }} />
-                <Cell img={PRODUCTS[2].img} label={PRODUCTS[2].label} style={{ height: 190 }} />
-              </div>
-              {/* Row: two side by side */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', borderBottom: '3px solid #1a1a1a' }}>
-                <Cell img={PRODUCTS[3].img} label={PRODUCTS[3].label} style={{ height: 190, borderRight: '3px solid #1a1a1a' }} />
-                <Cell img={PRODUCTS[4].img} label={PRODUCTS[4].label} style={{ height: 190 }} />
-              </div>
-              {/* Zebra bar bottom with tag */}
-              <div style={{ height: 60, background: ZEBRA, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{
-                  fontFamily: 'Helvetica, sans-serif', fontSize: 10, letterSpacing: 3,
-                  textTransform: 'uppercase', color: '#1a1a1a', background: '#f5f3ee',
-                  padding: '8px 16px', border: '2px solid #1a1a1a', whiteSpace: 'nowrap',
-                }}>More Coming Soon</span>
-              </div>
+            {/* Row 4, Column 2: Transparent cell framed with black border so underlying zebra gap background shows continuously */}
+            <div style={{
+              height: height,
+              border: '3px solid #1a1a1a',
+              background: 'transparent',
+            }} />
+
+            {/* Row 4, Column 3: More Coming Soon Box */}
+            <div style={{
+              height: height,
+              background: '#f5f3ee',
+              border: '3px solid #1a1a1a',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <span style={{
+                fontFamily: 'Helvetica, sans-serif',
+                fontSize: 11,
+                letterSpacing: 3,
+                textTransform: 'uppercase',
+                color: '#1a1a1a',
+                background: '#fff',
+                padding: '10px 18px',
+                border: '2px solid #1a1a1a',
+                whiteSpace: 'nowrap',
+              }}>
+                More Coming Soon
+              </span>
             </div>
-          )}
+          </div>
 
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+// @ts-expect-error CSS files are handled by the bundler at runtime.
 import './styles.css';
 
 import Landing from './components/Landing';
