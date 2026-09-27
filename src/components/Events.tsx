@@ -289,10 +289,6 @@ const EventsPage: React.FC = () => {
             ...(isMobile ? {} : { gridColumn: '6 / span 7' }) 
           }}>
             <p style={{ fontSize: '15px', lineHeight: 1.4, fontWeight: 700, margin: 0 }}>
-              The design combined contemporary styling with refined floral arrangements, custom table numbers, printed menus, and coordinated event materials. Carefully selected textures, lighting, and decorative elements created an intimate and welcoming environment that encouraged connection and celebration throughout the evening.
-            </p>
-
-            <p style={{ fontSize: '15px', lineHeight: 1.4, fontWeight: 700, margin: 0 }}>
               Working closely with the event organizers, we ensured that every detail—from the centerpiece compositions to the printed collateral—aligned with the broader event aesthetic, creating a seamless visual experience across the venue.
             </p>
 
@@ -300,10 +296,7 @@ const EventsPage: React.FC = () => {
             <div style={{ marginTop: '10px' }}>
               <h4 style={{ fontSize: '16px', fontWeight: 800, margin: '0 0 10px 0', textTransform: 'uppercase' }}>Scope of Work</h4>
               <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '15px', fontWeight: 700, lineHeight: 1.6, listStyleType: 'disc' }}>
-                <li>Table Styling &amp; Design Support</li>
                 <li>Custom Table Number Design</li>
-                <li>Printed Menu &amp; Event Materials</li>
-                <li>Decorative Element Coordination</li>
                 <li>Venue-Wide Visual Consistency</li>
               </ul>
             </div>
@@ -374,7 +367,7 @@ const EventsPage: React.FC = () => {
           </h2>
           
           <p style={{ fontSize: '14px', lineHeight: 1.4, fontWeight: 700, maxWidth: '500px', margin: 0 }}>
-            As part of the Chapter II Lilium Ball, C.HAUS OBJEKT assisted in developing a cohesive table design that complemented the event's overall visual identity. Drawing inspiration from the elegance and symbolism of the lilium flower, each table setting was thoughtfully curated to enhance the guest experience while maintaining a sophisticated gala atmosphere.
+            As part of the Chapter II Lilium Ball, C.HAUS OBJEKT created a photo backdrop designed to give guests a fun and interactive experience throughout the evening. Inspired by Hong Kong’s vibrant Dapa Dong aesthetic, the backdrop incorporated nostalgic cultural elements with a modern visual approach, creating a lively setting where guests could take photos, connect, and capture memorable moments from the celebration.
           </p>
         </div>
 
