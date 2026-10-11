@@ -994,6 +994,9 @@ ul {
     margin-top: clamp(-50px, 20vw, 10px) !important;
   }
 
+  /* Who We Are: stripe sits flush under Our Works */
+  .who-section { padding-top: 0; }
+
   /* Contact */
   .contact-section__grid {
     grid-template-columns: 1fr;

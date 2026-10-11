@@ -13,16 +13,23 @@ import rolSan4 from '../assets/RolSan4.jpg';
 import rolSan5 from '../assets/RolSan5.jpg';
 
 const PRODUCTS = [
-  { img: tshirt01,     label: 'Hong Kong Tee — East Meets West', badge: '' },
-  { img: tshirt02,     label: 'Hong Kong Tee — Skyline',         badge: '' },
-  { img: tshirt03,     label: 'Catch The Tram — Crop Tee',       badge: '' },
-  { img: tshirt04,     label: 'Hong Kong Tee — Bold Edition',    badge: '' },
-  { img: businessCard, label: 'Wesley Tsang — Business Card',    badge: '' },
-  { img: rolSan1,       label: 'Rolsan Work 1',                   badge: '' },
-  { img: rolSan2,       label: 'Rolsan Work 2',                   badge: '' },
-  { img: rolSan3,       label: 'Rolsan Work 3',                   badge: '' },
-  { img: rolSan4,       label: 'Rolsan Work 4',                   badge: '' },
-  { img: rolSan5,       label: 'Rolsan Work 5',                   badge: '' },
+  { img: tshirt01,     label: 'Hong Kong Tee — East Meets West', badge: '', category: 'tshirts' },
+  { img: tshirt02,     label: 'Hong Kong Tee — Skyline',         badge: '', category: 'tshirts' },
+  { img: tshirt03,     label: 'Catch The Tram — Crop Tee',       badge: '', category: 'tshirts' },
+  { img: tshirt04,     label: 'Hong Kong Tee — Bold Edition',    badge: '', category: 'tshirts' },
+  { img: businessCard, label: 'Wesley Tsang — Business Card',    badge: '', category: 'cards' },
+  { img: rolSan1,       label: 'Rolsan Work 1',                   badge: '', category: 'keychains' },
+  { img: rolSan2,       label: 'Rolsan Work 2',                   badge: '', category: 'keychains' },
+  { img: rolSan3,       label: 'Rolsan Work 3',                   badge: '', category: 'keychains' },
+  { img: rolSan4,       label: 'Rolsan Work 4',                   badge: '', category: 'keychains' },
+  { img: rolSan5,       label: 'Rolsan Work 5',                   badge: '', category: 'keychains' },
+];
+
+// Mobile-only grouping: one horizontal scroll row per category
+const CATEGORIES = [
+  { key: 'tshirts',   title: ['Hong Kong', 'T-Shirt Designs'], cellWidth: 250, comingSoon: false },
+  { key: 'cards',     title: ['Business', 'Card Design'],      cellWidth: 170, comingSoon: true },
+  { key: 'keychains', title: ['Coaster', 'Keychain Design'],   cellWidth: 150, comingSoon: false },
 ];
 
 const ZEBRA = 'repeating-linear-gradient(-45deg, #1a1a1a 0, #1a1a1a 10px, #f5f3ee 10px, #f5f3ee 20px)';
@@ -107,6 +114,115 @@ const Cell: React.FC<{
   );
 };
 
+const ComingSoon: React.FC<{ style?: React.CSSProperties }> = ({ style }) => (
+  <div style={{
+    background: '#f5f3ee',
+    border: '3px solid #1a1a1a',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...style,
+  }}>
+    <span style={{
+      fontFamily: 'Helvetica, sans-serif',
+      fontSize: 11,
+      letterSpacing: 3,
+      textTransform: 'uppercase',
+      color: '#1a1a1a',
+      background: '#fff',
+      padding: '10px 18px',
+      border: '2px solid #1a1a1a',
+      whiteSpace: 'nowrap',
+    }}>
+      More Coming Soon
+    </span>
+  </div>
+);
+
+const MobileWorks: React.FC<{ onViewEvents: () => void }> = ({ onViewEvents }) => {
+  const height = 220;
+  const stripe = <div aria-hidden="true" style={{ height: 12, width: '100%', background: ZEBRA }} />;
+
+  return (
+    <div style={{ padding: '32px 0 40px' }}>
+      <h2 style={{
+        fontFamily: 'Helvetica, sans-serif',
+        fontSize: 40,
+        textTransform: 'uppercase',
+        letterSpacing: '-0.5px',
+        lineHeight: 1,
+        margin: '0 0 24px',
+        padding: '0 24px',
+        color: '#1a1a1a',
+      }}>
+        Our <span style={{ color: '#6b859c' }}>Works</span>
+      </h2>
+
+      {CATEGORIES.map(cat => {
+        const items = PRODUCTS.filter(p => p.category === cat.key);
+        return (
+          <div key={cat.key}>
+            {stripe}
+            <h3 style={{
+              fontFamily: 'Helvetica, sans-serif',
+              fontSize: 18,
+              fontWeight: 400,
+              letterSpacing: 1,
+              textTransform: 'uppercase',
+              lineHeight: 1.1,
+              color: '#1a1a1a',
+              margin: '24px 24px 12px',
+            }}>
+              {cat.title[0]}<br />{cat.title[1]}
+            </h3>
+            <div style={{
+              display: 'flex',
+              gap: 12,
+              overflowX: 'auto',
+              scrollSnapType: 'x mandatory',
+              WebkitOverflowScrolling: 'touch',
+              padding: '0 24px 16px',
+            }}>
+              {items.map(product => (
+                <Cell
+                  key={product.label}
+                  img={product.img}
+                  label={product.label}
+                  style={{ flex: `0 0 ${cat.cellWidth}px`, height, scrollSnapAlign: 'start' }}
+                />
+              ))}
+              {cat.comingSoon && (
+                <ComingSoon style={{ flex: '0 0 220px', height, background: ZEBRA }} />
+              )}
+            </div>
+          </div>
+        );
+      })}
+      {stripe}
+
+      <div style={{ padding: '24px 24px 0' }}>
+        <button
+          onClick={onViewEvents}
+          style={{
+            fontFamily: 'Helvetica, sans-serif',
+            fontSize: 24,
+            letterSpacing: 4,
+            textTransform: 'uppercase',
+            border: 'none',
+            background: 'none',
+            borderBottom: '2px solid #1a1a1a',
+            padding: '0 0 6px',
+            color: '#1a1a1a',
+            cursor: 'pointer',
+          }}
+        >
+          View Events →
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   useEffect(() => {
@@ -131,6 +247,9 @@ const ProductGrid: React.FC = () => {
       {/* Top zebra stripe */}
       <div aria-hidden="true" style={{ height: 16, width: '100%', background: ZEBRA }} />
 
+      {isMobile ? (
+        <MobileWorks onViewEvents={() => navigate('/events')} />
+      ) : (
       <div style={{ padding: '80px 0' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
 
@@ -154,7 +273,7 @@ const ProductGrid: React.FC = () => {
               onClick={() => navigate('/events')} 
               style={{
                 fontFamily: 'Helvetica, sans-serif', 
-                fontSize: 12, 
+                fontSize: 18, 
                 letterSpacing: 2,
                 textTransform: 'uppercase', 
                 border: 'none',
@@ -195,32 +314,12 @@ const ProductGrid: React.FC = () => {
             }} />
 
             {/* Row 4, Column 3: More Coming Soon Box */}
-            <div style={{
-              height: height,
-              background: '#f5f3ee',
-              border: '3px solid #1a1a1a',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-              <span style={{
-                fontFamily: 'Helvetica, sans-serif',
-                fontSize: 11,
-                letterSpacing: 3,
-                textTransform: 'uppercase',
-                color: '#1a1a1a',
-                background: '#fff',
-                padding: '10px 18px',
-                border: '2px solid #1a1a1a',
-                whiteSpace: 'nowrap',
-              }}>
-                More Coming Soon
-              </span>
-            </div>
+            <ComingSoon style={{ height: height }} />
           </div>
 
         </div>
       </div>
+      )}
     </section>
   );
 };

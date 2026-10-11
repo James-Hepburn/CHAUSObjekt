@@ -16,6 +16,7 @@ const Footer: React.FC = () => (
         <a href="#services" className="footer__link">Services</a>
         <a href="#who-we-are" className="footer__link">Who We Are</a>
         <a href="#shop" className="footer__link">Shop</a>
+        <a href="/events" className="footer__link">Events</a>
         <a href="#contact" className="footer__link">Contact</a>
       </nav>
     </div>

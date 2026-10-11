@@ -296,8 +296,9 @@ const EventsPage: React.FC = () => {
             <div style={{ marginTop: '10px' }}>
               <h4 style={{ fontSize: '16px', fontWeight: 800, margin: '0 0 10px 0', textTransform: 'uppercase' }}>Scope of Work</h4>
               <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '15px', fontWeight: 700, lineHeight: 1.6, listStyleType: 'disc' }}>
-                <li>Custom Table Number Design</li>
+                <li>Table Styling & Design Support</li>
                 <li>Venue-Wide Visual Consistency</li>
+                <li>Decorative Element Coordination</li>
               </ul>
             </div>
           </div>
